@@ -1,0 +1,16 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  dev-hub-alias:  # id of input
+    description: 'SFDX Alias of DevHub where the package is registered'
+    required: true
+  package-id:  # id of input
+    description: 'Unlocked Package Id (04t...)'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.dev-hub-alias }}
+    - ${{ inputs.package-id }}
